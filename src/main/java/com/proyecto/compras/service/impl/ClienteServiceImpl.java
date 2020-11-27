@@ -12,8 +12,13 @@ import java.util.Optional;
 @Service
 public class ClienteServiceImpl  implements IClienteService {
 
-    @Autowired
     private IClienteRepo repo;
+
+    @Autowired
+    public ClienteServiceImpl(IClienteRepo repo){
+        this.repo = repo;
+
+    }
 
     @Override
     public List<Cliente> listar() {

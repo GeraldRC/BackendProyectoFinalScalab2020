@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/formaspago")
 public class FormaPagoController {
 
-    private IFormaPagoService service;
+    private final IFormaPagoService service;
 
     @Autowired
     public FormaPagoController(IFormaPagoService service){
@@ -56,7 +56,7 @@ public class FormaPagoController {
     public ResponseEntity<Object> eliminar(@PathVariable("id") Integer id){
         FormaPago formaPago = service.buscarPorId(id);
         if (formaPago.getId() == null){
-            throw new ModelNotFoundException("ID NO ENCONTRADO! "+ id);
+            throw new ModelNotFoundException("ID '"+id+"' NO ENCONTRADO! ");
         }
         service.eliminar(id);
         return new ResponseEntity<>(HttpStatus.OK);

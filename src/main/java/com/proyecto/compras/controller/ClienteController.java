@@ -17,8 +17,9 @@ import java.util.List;
 @RequestMapping("/clientes")
 public class ClienteController {
 
-    private IClienteService service;
+    private final IClienteService service;
 
+    @Autowired
     public ClienteController(IClienteService service){
         this.service = service;
     }
@@ -47,7 +48,7 @@ public class ClienteController {
     @PutMapping
     public ResponseEntity<Cliente> modificar(@Valid @RequestBody Cliente cliente){
         Cliente obj = service.modificar(cliente);
-        return new ResponseEntity<Cliente>(obj, HttpStatus.OK);
+        return new ResponseEntity<>(obj, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -56,7 +57,7 @@ public class ClienteController {
         if (obj.getIdCliente() == null){
             throw new ModelNotFoundException("ID NO ENCONTRADO! " +id );
         }
-        return new ResponseEntity<Object>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class FormaPagoServiceImpl implements IFormaPagoService {
 
-    private IFormaPagoRepo repo;
+    private final IFormaPagoRepo repo;
 
     @Autowired
     public FormaPagoServiceImpl(IFormaPagoRepo repo){
