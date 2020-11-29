@@ -27,7 +27,7 @@ public class ProductoServiceImpl implements IProductoService {
     @Override
     public Producto buscarPorId(Integer id) {
         Optional<Producto> op = repo.findById(id);
-        return op.isPresent() ? op.get() : new Producto();
+        return op.orElseGet(Producto::new);
     }
 
     @Override

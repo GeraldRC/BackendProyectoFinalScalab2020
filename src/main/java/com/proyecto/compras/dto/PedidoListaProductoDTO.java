@@ -9,7 +9,7 @@ public class PedidoListaProductoDTO {
 
     private Pedido pedido;
 
-    private List<Producto> productos;
+    private List<ProductoDTO> productos;
 
     public Pedido getPedido() {
         return pedido;
@@ -19,11 +19,11 @@ public class PedidoListaProductoDTO {
         this.pedido = pedido;
     }
 
-    public List<Producto> getProductos() {
+    public List<ProductoDTO> getProductos() {
         return productos;
     }
 
-    public void setProductos(List<Producto> productos) {
+    public void setProductos(List<ProductoDTO> productos) {
         this.productos = productos;
     }
 }

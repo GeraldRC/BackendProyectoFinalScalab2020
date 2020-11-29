@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class MarcaServiceImpl implements IMarcaService {
 
-    private IMarcaRepo repo;
+    private final IMarcaRepo repo;
 
     @Autowired
     public MarcaServiceImpl(IMarcaRepo repo){
@@ -27,7 +27,7 @@ public class MarcaServiceImpl implements IMarcaService {
     @Override
     public Marca buscarPorId(Integer id) {
         Optional<Marca> op = repo.findById(id);
-        return op.isPresent() ? op.get() : new Marca();
+        return op.orElseGet(Marca::new);
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.proyecto.compras.service.impl;
 
 import com.proyecto.compras.dto.PedidoListaProductoDTO;
 import com.proyecto.compras.model.Pedido;
-import com.proyecto.compras.repo.IPedidoProductoRepo;
+import com.proyecto.compras.repo.IDetallePedidoRepo;
 import com.proyecto.compras.repo.IPedidoRepo;
 import com.proyecto.compras.service.IPedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,23 +15,23 @@ import java.util.Optional;
 @Service
 public class PedidoServiceImpl implements IPedidoService {
 
-    @Autowired
-    private IPedidoRepo repo;
+
+    private final  IPedidoRepo repo;
+    private final IDetallePedidoRepo repoPedidoProducto;
 
     @Autowired
-    private IPedidoProductoRepo repoPedidoProducto;
+    public PedidoServiceImpl(IPedidoRepo repo, IDetallePedidoRepo repoPedidoProducto){
+        this.repo = repo;
+        this.repoPedidoProducto = repoPedidoProducto;
+    }
 
     @Transactional
     @Override
     public Pedido registrarTransaccional(PedidoListaProductoDTO dto) {
-        dto.getPedido().getPedidoProductos().forEach(ped ->{
-            ped.setPedido(dto.getPedido());
-        });
+        dto.getPedido().getDetallePedidos().forEach(detalle -> detalle.setPedido(dto.getPedido()));
         repo.save(dto.getPedido());
 
-        dto.getProductos().forEach(pro -> {
-            repoPedidoProducto.registrar(dto.getPedido().getIdPedido(),pro.getIdProducto(),dto.getProductos().size());
-        });
+        dto.getProductos().forEach(productos -> repoPedidoProducto.registrar(dto.getPedido().getIdPedido(),productos.getId(), productos.getCantidad()));
 
         return dto.getPedido();
     }
@@ -44,12 +44,12 @@ public class PedidoServiceImpl implements IPedidoService {
     @Override
     public Pedido buscarPorId(Integer id) {
         Optional<Pedido> op = repo.findById(id);
-        return op.isPresent() ? op.get() : new Pedido();
+        return op.orElseGet(Pedido::new);
     }
 
     @Override
     public Pedido registrar(Pedido obj) {
-        obj.getPedidoProductos().forEach(pro ->
+        obj.getDetallePedidos().forEach(pro ->
                 pro.setPedido(obj));
         return repo.save(obj);
     }

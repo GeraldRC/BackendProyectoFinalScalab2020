@@ -3,7 +3,7 @@ package com.proyecto.compras.controller;
 import com.proyecto.compras.dto.PedidoListaProductoDTO;
 import com.proyecto.compras.exception.ModelNotFoundException;
 import com.proyecto.compras.model.Pedido;
-import com.proyecto.compras.service.IPedidoProductoService;
+import com.proyecto.compras.service.IDetallePedidoService;
 import com.proyecto.compras.service.IPedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,9 +21,6 @@ public class PedidoController {
 
     @Autowired
     private IPedidoService service;
-
-    @Autowired
-    private IPedidoProductoService servicePedidoProducto;
 
     @GetMapping
     public ResponseEntity<List<Pedido>> listar(){

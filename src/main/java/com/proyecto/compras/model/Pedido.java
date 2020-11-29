@@ -34,7 +34,7 @@ public class Pedido {
     private Date fecha;
 
     @OneToMany(mappedBy = "producto", cascade = { CascadeType.ALL }, orphanRemoval = true)
-    private List<PedidoProducto> pedidoProductos;
+    private List<DetallePedido> detallePedidos;
 
     public Integer getIdPedido() {
         return idPedido;
@@ -84,12 +84,12 @@ public class Pedido {
         this.tipoEntrega = entrega;
     }
 
-    public List<PedidoProducto> getPedidoProductos() {
-        return pedidoProductos;
+    public List<DetallePedido> getDetallePedidos() {
+        return detallePedidos;
     }
 
-    public void setPedidoProductos(List<PedidoProducto> pedidoProductos) {
-        this.pedidoProductos = pedidoProductos;
+    public void setDetallePedidos(List<DetallePedido> detallePedidos) {
+        this.detallePedidos = detallePedidos;
     }
 
 	@Override

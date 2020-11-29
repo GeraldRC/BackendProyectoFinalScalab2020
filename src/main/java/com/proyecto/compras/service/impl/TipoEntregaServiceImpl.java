@@ -1,7 +1,6 @@
 package com.proyecto.compras.service.impl;
 
 import com.proyecto.compras.model.TipoEntrega;
-import com.proyecto.compras.repo.IClienteRepo;
 import com.proyecto.compras.repo.ITipoEntregaRepo;
 import com.proyecto.compras.service.ITipoEntregaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import java.util.Optional;
 @Service
 public class TipoEntregaServiceImpl implements ITipoEntregaService {
 
-    private ITipoEntregaRepo repo;
+    private final ITipoEntregaRepo repo;
 
     @Autowired
     public TipoEntregaServiceImpl(ITipoEntregaRepo repo){
@@ -28,7 +27,7 @@ public class TipoEntregaServiceImpl implements ITipoEntregaService {
     @Override
     public TipoEntrega buscarPorId(Integer id) {
         Optional<TipoEntrega> op = repo.findById(id);
-        return op.isPresent() ? op.get() : new TipoEntrega();
+        return op.orElseGet(TipoEntrega::new);
     }
 
     @Override

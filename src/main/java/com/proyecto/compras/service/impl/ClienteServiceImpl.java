@@ -28,7 +28,7 @@ public class ClienteServiceImpl  implements IClienteService {
     @Override
     public Cliente buscarPorId(Integer id) {
         Optional<Cliente> op = repo.findById(id);
-        return op.isPresent() ? op.get() : new Cliente();
+        return op.orElseGet(Cliente::new);
     }
 
     @Override

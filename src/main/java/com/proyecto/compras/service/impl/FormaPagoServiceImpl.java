@@ -27,7 +27,7 @@ public class FormaPagoServiceImpl implements IFormaPagoService {
     @Override
     public FormaPago buscarPorId(Integer id) {
         Optional<FormaPago> op = repo.findById(id);
-        return op.isPresent() ? op.get() : new FormaPago();
+        return op.orElseGet(FormaPago::new);
     }
 
     @Override

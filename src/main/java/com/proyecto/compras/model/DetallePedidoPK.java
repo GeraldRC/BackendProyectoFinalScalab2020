@@ -6,7 +6,7 @@ import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 @Embeddable
-public class PedidoProductoPK implements Serializable {
+public class DetallePedidoPK implements Serializable {
 
     /**
 	 * 
@@ -38,7 +38,7 @@ public class PedidoProductoPK implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PedidoProductoPK other = (PedidoProductoPK) obj;
+		DetallePedidoPK other = (DetallePedidoPK) obj;
 		if (pedido == null) {
 			if (other.pedido != null)
 				return false;

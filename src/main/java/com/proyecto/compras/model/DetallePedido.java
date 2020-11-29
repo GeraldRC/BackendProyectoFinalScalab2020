@@ -4,9 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "pedidos_productos")
-@IdClass(PedidoProductoPK.class)
-public class PedidoProducto {
+@Table(name = "detalle_pedidos")
+@IdClass(DetallePedidoPK.class)
+public class DetallePedido {
 
     @Id
     private Pedido pedido;

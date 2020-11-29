@@ -1,7 +1,7 @@
 package com.proyecto.compras.controller;
 
-import com.proyecto.compras.model.PedidoProducto;
-import com.proyecto.compras.service.IPedidoProductoService;
+import com.proyecto.compras.model.DetallePedido;
+import com.proyecto.compras.service.IDetallePedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,17 +14,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/pedidoproductos")
-public class PedidoProductoController {
+public class DetallePedidoController {
 
-    private final IPedidoProductoService service;
+    private final IDetallePedidoService service;
 
     @Autowired
-    public PedidoProductoController(IPedidoProductoService service){
+    public DetallePedidoController(IDetallePedidoService service){
         this.service = service;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<PedidoProducto>> listar(@PathVariable("id") Integer idPedido){
+    public ResponseEntity<List<DetallePedido>> listar(@PathVariable("id") Integer idPedido){
         return new ResponseEntity<>(service.listarProductosPorPedido(idPedido), HttpStatus.OK);
     }
 
