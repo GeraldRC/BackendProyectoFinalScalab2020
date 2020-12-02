@@ -15,15 +15,11 @@ import java.util.Optional;
 @Service
 public class PedidoServiceImpl implements IPedidoService {
 
-
-    private final  IPedidoRepo repo;
-    private final IDetallePedidoRepo repoPedidoProducto;
+    @Autowired
+    private   IPedidoRepo repo;
 
     @Autowired
-    public PedidoServiceImpl(IPedidoRepo repo, IDetallePedidoRepo repoPedidoProducto){
-        this.repo = repo;
-        this.repoPedidoProducto = repoPedidoProducto;
-    }
+    private  IDetallePedidoRepo repoPedidoProducto;
 
     @Transactional
     @Override

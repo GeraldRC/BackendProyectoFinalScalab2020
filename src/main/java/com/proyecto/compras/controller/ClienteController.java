@@ -17,12 +17,8 @@ import java.util.List;
 @RequestMapping("/clientes")
 public class ClienteController {
 
-    private final IClienteService service;
-
     @Autowired
-    public ClienteController(IClienteService service){
-        this.service = service;
-    }
+    private  IClienteService service;
 
     @GetMapping
     public ResponseEntity<List<Cliente>> listar(){

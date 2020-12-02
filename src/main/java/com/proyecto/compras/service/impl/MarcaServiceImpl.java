@@ -12,12 +12,8 @@ import java.util.Optional;
 @Service
 public class MarcaServiceImpl implements IMarcaService {
 
-    private final IMarcaRepo repo;
-
     @Autowired
-    public MarcaServiceImpl(IMarcaRepo repo){
-        this.repo = repo;
-    }
+    private  IMarcaRepo repo;
 
     @Override
     public List<Marca> listar() {

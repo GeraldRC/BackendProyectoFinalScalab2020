@@ -17,12 +17,8 @@ import java.util.List;
 @RequestMapping("/marcas")
 public class MarcaController {
 
-    private final IMarcaService service;
-
     @Autowired
-    public MarcaController(IMarcaService service){
-        this.service = service;
-    }
+    private  IMarcaService service;
 
     @GetMapping
     public ResponseEntity<List<Marca>> listar(){

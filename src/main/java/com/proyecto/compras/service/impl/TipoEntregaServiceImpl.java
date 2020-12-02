@@ -12,12 +12,8 @@ import java.util.Optional;
 @Service
 public class TipoEntregaServiceImpl implements ITipoEntregaService {
 
-    private final ITipoEntregaRepo repo;
-
     @Autowired
-    public TipoEntregaServiceImpl(ITipoEntregaRepo repo){
-        this.repo = repo;
-    }
+    private  ITipoEntregaRepo repo;
 
     @Override
     public List<TipoEntrega> listar() {

@@ -14,15 +14,12 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/formaspago")
+@RequestMapping("/formaspagos")
 public class FormaPagoController {
 
-    private final IFormaPagoService service;
-
     @Autowired
-    public FormaPagoController(IFormaPagoService service){
-        this.service = service;
-    }
+    private  IFormaPagoService service;
+
 
     @GetMapping
     public ResponseEntity<List<FormaPago>> listar(){

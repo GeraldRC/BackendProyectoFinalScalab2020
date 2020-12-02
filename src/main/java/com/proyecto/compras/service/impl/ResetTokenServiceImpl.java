@@ -9,12 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ResetTokenServiceImpl  implements IResetTokenService {
 
-    private final IResetTokenRepo repo;
-
     @Autowired
-    public ResetTokenServiceImpl(IResetTokenRepo repo){
-        this.repo = repo;
-    }
+    private  IResetTokenRepo repo;
 
     @Override
     public ResetToken findByToken(String token) {

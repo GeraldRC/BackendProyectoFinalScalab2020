@@ -13,15 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pedidoproductos")
+@RequestMapping("/detallepedidos")
 public class DetallePedidoController {
 
-    private final IDetallePedidoService service;
-
     @Autowired
-    public DetallePedidoController(IDetallePedidoService service){
-        this.service = service;
-    }
+    private  IDetallePedidoService service;
 
     @GetMapping("/{id}")
     public ResponseEntity<List<DetallePedido>> listar(@PathVariable("id") Integer idPedido){

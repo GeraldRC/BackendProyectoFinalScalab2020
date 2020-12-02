@@ -9,12 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginServiceImpl implements ILoginService {
 
-    private final ILoginRepo repo;
-
     @Autowired
-    public LoginServiceImpl(ILoginRepo repo){
-        this.repo = repo;
-    }
+    private  ILoginRepo repo;
 
     @Override
     public Usuario verificarUsername(String username) {

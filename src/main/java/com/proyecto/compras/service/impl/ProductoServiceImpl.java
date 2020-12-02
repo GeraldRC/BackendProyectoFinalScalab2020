@@ -12,12 +12,8 @@ import java.util.Optional;
 @Service
 public class ProductoServiceImpl implements IProductoService {
 
-    private IProductoRepo repo;
-
     @Autowired
-    public ProductoServiceImpl(IProductoRepo repo){
-        this.repo = repo;
-    }
+    private IProductoRepo repo;
 
     @Override
     public List<Producto> listar() {

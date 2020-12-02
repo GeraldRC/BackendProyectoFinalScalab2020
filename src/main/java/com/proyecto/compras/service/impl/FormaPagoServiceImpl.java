@@ -12,12 +12,8 @@ import java.util.Optional;
 @Service
 public class FormaPagoServiceImpl implements IFormaPagoService {
 
-    private final IFormaPagoRepo repo;
-
     @Autowired
-    public FormaPagoServiceImpl(IFormaPagoRepo repo){
-        this.repo = repo;
-    }
+    private  IFormaPagoRepo repo;
 
     @Override
     public List<FormaPago> listar() {

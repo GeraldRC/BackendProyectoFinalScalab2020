@@ -17,12 +17,8 @@ import java.util.List;
 @RequestMapping("/tipoentregas")
 public class TipoEntregaController {
 
-    private final ITipoEntregaService service;
-
     @Autowired
-    public TipoEntregaController(ITipoEntregaService service){
-        this.service = service;
-    }
+    private  ITipoEntregaService service;
 
     @GetMapping
     public ResponseEntity<List<TipoEntrega>> listar(){

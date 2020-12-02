@@ -11,12 +11,8 @@ import java.util.List;
 @Service
 public class DetallePedidoServiceImpl implements IDetallePedidoService {
 
-    private final IDetallePedidoRepo repo;
-
     @Autowired
-    public DetallePedidoServiceImpl(IDetallePedidoRepo repo){
-        this.repo = repo;
-    }
+    private  IDetallePedidoRepo repo;
 
     @Override
     public List<DetallePedido> listarProductosPorPedido(Integer idPedido) {

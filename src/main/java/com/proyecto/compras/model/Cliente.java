@@ -17,10 +17,15 @@ public class Cliente {
     @NotNull
     private String rutCliente;
 
-    @Column(name = "nombre")
+    @Column(name = "nombres")
     @NotNull
     @Size(min = 2, max = 20)
-    private String nombreCliente;
+    private String nombres;
+
+    @Column(name = "apellidos")
+    @NotNull
+    @Size(min = 2, max = 30)
+    private String apellidos;
 
     @Column(name = "correo")
     @NotNull
@@ -58,12 +63,20 @@ public class Cliente {
         this.rutCliente = rutCliente;
     }
 
-    public String getNombreCliente() {
-        return nombreCliente;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
+    public void setNombres(String nombreCliente) {
+        this.nombres = nombreCliente;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getCorreoCliente() {
@@ -97,4 +110,6 @@ public class Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+
 }
