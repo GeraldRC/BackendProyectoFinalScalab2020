@@ -14,14 +14,11 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class EmailUtil {
 
-    private final JavaMailSender mailSender;
-    private final SpringTemplateEngine templateEngine;
+    @Autowired
+    private  JavaMailSender mailSender;
 
     @Autowired
-    public EmailUtil(JavaMailSender mailSender, SpringTemplateEngine templateEngine){
-        this.mailSender = mailSender;
-        this.templateEngine = templateEngine;
-    }
+    private  SpringTemplateEngine templateEngine;
 
     public void enviarMail(Mail mail){
         try {

@@ -27,14 +27,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http
-                .exceptionHandling().authenticationEntryPoint(new AuthException())
+        http.exceptionHandling()
+                .authenticationEntryPoint(new AuthException())
                 .and()
                 .requestMatchers()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/v2/api-docs/**").permitAll()
-                .antMatchers("/clientes/**").permitAll()
+                .antMatchers("/v2/api-docs/**").authenticated()
+                .antMatchers("/clientes/**").authenticated()
                 .antMatchers("/detallepedidos/**").authenticated()
                 .antMatchers("/formaspagos/**").authenticated()
                 .antMatchers("/marcas/**").authenticated()

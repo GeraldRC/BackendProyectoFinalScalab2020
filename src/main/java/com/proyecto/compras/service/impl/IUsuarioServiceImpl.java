@@ -31,7 +31,9 @@ public class IUsuarioServiceImpl implements UserDetailsService {
 
         List<GrantedAuthority> roles = new ArrayList<>();
 
-        roles.add(new SimpleGrantedAuthority(usuario.getRol().getNombre()));
+        usuario.getRoles().forEach(rol -> {
+            roles.add(new SimpleGrantedAuthority(rol.getNombre()));
+        });
 
         return new User(usuario.getUsername(), usuario.getPassword(), roles);
 

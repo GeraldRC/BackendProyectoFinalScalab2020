@@ -11,7 +11,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idUsuario;
 
     @Column(name = "username",unique = true)
     @NotNull
@@ -25,16 +25,17 @@ public class Usuario {
 
     private boolean enabled;
 
-    @ManyToOne
-    @JoinColumn(name = "rol_id",foreignKey = @ForeignKey(name = "FK_usuario_roles"))
-    private Rol rol;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "idUsuario"),
+                inverseJoinColumns = @JoinColumn(name = "id_rol",referencedColumnName = "idRol"))
+    private List<Rol> roles;
 
     public Integer getId() {
-        return id;
+        return idUsuario;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getUsername() {
@@ -61,11 +62,11 @@ public class Usuario {
         this.enabled = enabled;
     }
 
-    public Rol getRol() {
-        return rol;
+    public List<Rol> getRoles() {
+        return roles;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
     }
 }
