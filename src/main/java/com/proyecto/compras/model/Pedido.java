@@ -37,6 +37,11 @@ public class Pedido {
     @OneToMany(mappedBy = "pedido", cascade = { CascadeType.ALL }, orphanRemoval = true)
     private List<DetallePedido> detallePedidos;
 
+    @PrePersist
+    public void prePersist(){
+        this.fecha = new Date();
+    }
+
     public Integer getIdPedido() {
         return idPedido;
     }
