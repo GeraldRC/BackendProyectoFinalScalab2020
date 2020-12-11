@@ -4,6 +4,8 @@ import com.proyecto.compras.model.Cliente;
 import com.proyecto.compras.repo.IClienteRepo;
 import com.proyecto.compras.service.IClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,5 +42,10 @@ public class ClienteServiceImpl  implements IClienteService {
     public boolean eliminar(Integer id) {
         repo.deleteById(id);
         return true;
+    }
+
+    @Override
+    public Page<Cliente> listarPageable(Pageable pageable) {
+        return repo.findAll(pageable);
     }
 }

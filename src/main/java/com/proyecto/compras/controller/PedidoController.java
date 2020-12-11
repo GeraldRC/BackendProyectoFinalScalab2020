@@ -6,6 +6,8 @@ import com.proyecto.compras.model.Pedido;
 import com.proyecto.compras.service.IDetallePedidoService;
 import com.proyecto.compras.service.IPedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -35,6 +37,12 @@ public class PedidoController {
             throw  new ModelNotFoundException("EL ID "+id+" NO HA SIDO ENCONTRADO");
         }
         return new ResponseEntity<>(pedido,HttpStatus.OK);
+    }
+
+    @GetMapping("/pageable")
+    public ResponseEntity<Page<Pedido>> listarPageable(Pageable pageable) {
+        Page<Pedido> pedidos = service.listarPageable(pageable);
+        return new ResponseEntity<Page<Pedido>>(pedidos, HttpStatus.OK);
     }
 
     @PostMapping

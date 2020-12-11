@@ -1,9 +1,12 @@
 package com.proyecto.compras.controller;
 
 import com.proyecto.compras.exception.ModelNotFoundException;
+import com.proyecto.compras.model.Pedido;
 import com.proyecto.compras.model.Producto;
 import com.proyecto.compras.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -34,6 +37,12 @@ public class ProductoController {
             throw  new ModelNotFoundException("EL ID "+id+" HA SIDO ENCONTRAO!");
         }
         return new ResponseEntity<>(producto,HttpStatus.OK);
+    }
+
+    @GetMapping("/pageable")
+    public ResponseEntity<Page<Producto>> listarPageable(Pageable pageable) {
+        Page<Producto> productos = service.listarPageable(pageable);
+        return new ResponseEntity<Page<Producto>>(productos, HttpStatus.OK);
     }
 
     @PostMapping
