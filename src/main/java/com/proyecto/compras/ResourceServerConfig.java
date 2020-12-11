@@ -33,14 +33,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .requestMatchers()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/v2/api-docs/**").permitAll()
-                .antMatchers("/clientes/**").permitAll()
-                .antMatchers("/detallepedidos/**").permitAll()
-                .antMatchers("/formaspagos/**").permitAll()
-                .antMatchers("/marcas/**").permitAll()
-                .antMatchers("/pedidos/**").permitAll()
-                .antMatchers("/productos/**").permitAll()
-                .antMatchers("/tipoentregas/**").permitAll()
+                .antMatchers("/v2/api-docs/**").authenticated()
+                .antMatchers("/clientes/**").authenticated()
+                .antMatchers("/detallepedidos/**").authenticated()
+                .antMatchers("/formaspagos/**").authenticated()
+                .antMatchers("/marcas/**").authenticated()
+                .antMatchers("/pedidos/**").authenticated()
+                .antMatchers("/productos/**").authenticated()
+                .antMatchers("/tipoentregas/**").authenticated()
                 .antMatchers("/tokens/**").permitAll();
     }
 }

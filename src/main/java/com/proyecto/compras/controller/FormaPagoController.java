@@ -21,12 +21,13 @@ public class FormaPagoController {
     @Autowired
     private  IFormaPagoService service;
 
-
+    @PreAuthorize("hasAuthority('USER') or ('ADMIN') or ('DBA')")
     @GetMapping
     public ResponseEntity<List<FormaPago>> listar(){
         return new ResponseEntity<>(service.listar(), HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('USER') or ('ADMIN') or ('DBA')")
     @GetMapping("/{id}")
     public ResponseEntity<FormaPago> buscarPorId(@PathVariable("id") Integer id){
         FormaPago formaPago = service.buscarPorId(id);
@@ -45,12 +46,14 @@ public class FormaPagoController {
         return ResponseEntity.created(location).build();
     }
 
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('DBA')")
     @PutMapping
     public ResponseEntity<FormaPago> modificar(@Valid @RequestBody FormaPago formaPago){
         FormaPago obj = service.modificar(formaPago);
         return new ResponseEntity<>(obj,HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('DBA')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> eliminar(@PathVariable("id") Integer id){
         FormaPago formaPago = service.buscarPorId(id);
