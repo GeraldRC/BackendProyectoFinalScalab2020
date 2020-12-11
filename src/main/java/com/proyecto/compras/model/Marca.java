@@ -1,6 +1,7 @@
 package com.proyecto.compras.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -13,7 +14,7 @@ public class Marca {
     private Integer idMarca;
 
     @Column(name = "nombre_marca")
-    @NotNull
+    @NotEmpty
     @Size(min = 2 ,max = 20)
     private String nombreMarca;
 

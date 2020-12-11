@@ -4,8 +4,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Objects;
 
 @ApiModel(description = "Informacion de productos")
 @Entity
@@ -18,7 +20,7 @@ public class Producto {
 
     @ApiModelProperty(notes = "El nombre del producto debe contener entre 2 y 50 caracteres")
     @Column(name = "nombre_producto")
-    @NotNull
+    @NotEmpty
     @Size(min = 2, max = 50)
     private String nombreProducto;
 
@@ -67,30 +69,16 @@ public class Producto {
         this.setStock(stock - cantidad);
     }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((idProducto == null) ? 0 : idProducto.hashCode());
-		return result;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Producto producto = (Producto) o;
+        return Objects.equals(idProducto, producto.idProducto);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Producto other = (Producto) obj;
-		if (idProducto == null) {
-			if (other.idProducto != null)
-				return false;
-		} else if (!idProducto.equals(other.idProducto))
-			return false;
-		return true;
-	}
-
-    
+    @Override
+    public int hashCode() {
+        return Objects.hash(idProducto);
+    }
 }

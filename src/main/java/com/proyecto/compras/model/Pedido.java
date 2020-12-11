@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "pedidos")
@@ -33,7 +34,7 @@ public class Pedido {
     @Temporal(TemporalType.DATE)
     private Date fecha;
 
-    @OneToMany(mappedBy = "producto", cascade = { CascadeType.ALL }, orphanRemoval = true)
+    @OneToMany(mappedBy = "pedido", cascade = { CascadeType.ALL }, orphanRemoval = true)
     private List<DetallePedido> detallePedidos;
 
     public Integer getIdPedido() {
@@ -92,30 +93,16 @@ public class Pedido {
         this.detallePedidos = detallePedidos;
     }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
-		return result;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pedido pedido = (Pedido) o;
+        return Objects.equals(idPedido, pedido.idPedido);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Pedido other = (Pedido) obj;
-		if (cliente == null) {
-			if (other.cliente != null)
-				return false;
-		} else if (!cliente.equals(other.cliente))
-			return false;
-		return true;
-	}
-
-    
+    @Override
+    public int hashCode() {
+        return Objects.hash(idPedido);
+    }
 }

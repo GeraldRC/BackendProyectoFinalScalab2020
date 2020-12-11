@@ -1,7 +1,7 @@
 package com.proyecto.compras.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -14,12 +14,12 @@ public class Usuario {
     private Integer idUsuario;
 
     @Column(name = "username",unique = true)
-    @NotNull
+    @NotEmpty
     @Size(max = 30)
     private String username;
 
     @Column(name = "pasword")
-    @NotNull
+    @NotEmpty
     @Size(max = 60)
     private String password;
 

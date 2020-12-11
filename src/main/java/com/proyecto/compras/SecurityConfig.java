@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${security.security-realm}")
     private String securityRealm;
 
-    @Qualifier("IUsuarioServiceImpl")
+
     @Autowired
     private  UserDetailsService userDetailsService;
 

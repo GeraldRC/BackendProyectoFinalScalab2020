@@ -1,5 +1,7 @@
 package com.proyecto.compras.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -8,6 +10,7 @@ import javax.validation.constraints.NotNull;
 @IdClass(DetallePedidoPK.class)
 public class DetallePedido {
 
+    @JsonIgnore
     @Id
     private Pedido pedido;
 
@@ -17,14 +20,6 @@ public class DetallePedido {
     @Column(name = "cantidad")
     @NotNull
     private Integer cantidad;
-
-    public Pedido getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
 
     public Producto getProducto() {
         return producto;
@@ -41,4 +36,13 @@ public class DetallePedido {
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
 }

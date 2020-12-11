@@ -1,6 +1,7 @@
 package com.proyecto.compras.repo;
 
 import com.proyecto.compras.model.DetallePedido;
+import com.proyecto.compras.model.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,6 +17,7 @@ public interface IDetallePedidoRepo extends JpaRepository<DetallePedido,Integer>
     @Query(value = "INSERT INTO detalle_pedidos(id_producto, id_pedido, cantidad) VALUES (:idProducto, :idPedido, :cantidad)", nativeQuery = true)
     Integer registrar(@Param("idPedido") Integer idPedido, @Param("idProducto") Integer idProducto,@Param("cantidad") Integer cantidad);
 
-    @Query("from DetallePedido ce where ce.pedido = :idPedido")
+
+    @Query("from DetallePedido de where de.pedido.idPedido = :idPedido")
     List<DetallePedido> listarProductosPorPedido(@Param("idPedido") Integer idPedido);
 }

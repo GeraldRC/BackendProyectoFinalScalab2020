@@ -8,6 +8,7 @@ import com.proyecto.compras.service.IPedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -24,7 +25,7 @@ public class PedidoController {
 
     @GetMapping
     public ResponseEntity<List<Pedido>> listar(){
-        return new ResponseEntity<>(service.listar(), HttpStatus.OK);
+        return new ResponseEntity<List<Pedido>>(service.listar(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

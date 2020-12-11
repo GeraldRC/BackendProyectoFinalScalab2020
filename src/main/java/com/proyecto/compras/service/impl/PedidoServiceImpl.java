@@ -18,10 +18,10 @@ import java.util.Optional;
 public class PedidoServiceImpl implements IPedidoService {
 
     @Autowired
-    private   IPedidoRepo repo;
+    private IPedidoRepo repo;
 
     @Autowired
-    private  IDetallePedidoRepo repoPedidoProducto;
+    private IDetallePedidoRepo repoPedidoProducto;
 
     @Autowired
     private IProductoRepo repoProducto;
@@ -57,7 +57,7 @@ public class PedidoServiceImpl implements IPedidoService {
     @Override
     public Pedido registrar(Pedido obj) {
         obj.getDetallePedidos().forEach(pro ->
-                pro.setPedido(obj));
+               pro.setPedido(obj));
         return repo.save(obj);
     }
 

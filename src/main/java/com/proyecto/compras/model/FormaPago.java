@@ -1,6 +1,7 @@
 package com.proyecto.compras.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -13,7 +14,7 @@ public class FormaPago {
     private Integer id;
 
     @Column(name = "forma_pago")
-    @NotNull
+    @NotEmpty
     @Size(max = 30)
     private String formaPago;
 

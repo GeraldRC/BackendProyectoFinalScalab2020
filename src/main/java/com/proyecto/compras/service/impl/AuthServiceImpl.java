@@ -20,6 +20,15 @@ public class AuthServiceImpl {
             case "buscarPorId":
                 metodoRol = "ADMIN, USER, DBA";
                 break;
+            case "registrar":
+                metodoRol = "ADMIN, DBA";
+                break;
+            case "modificar":
+                metodoRol = "ADMIN, DBA";
+                break;
+            case "eliminar":
+                metodoRol = "ADMIN, DBA";
+                break;
         }
 
         String metodoRoles[] = metodoRol.split(",");

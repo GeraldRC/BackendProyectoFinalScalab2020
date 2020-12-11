@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @ApiModel(description = "Informacion de clientes")
@@ -19,42 +19,42 @@ public class Cliente {
 
     @ApiModelProperty(notes = "El rut debe ser unico")
     @Column(name = "rut",unique = true)
-    @NotNull
+    @NotEmpty
     private String rutCliente;
 
     @ApiModelProperty(notes = "El nombre debe contener entre 2 y 20 caracteres")
     @Column(name = "nombres")
-    @NotNull
+    @NotEmpty
     @Size(min = 2, max = 20)
     private String nombres;
 
     @ApiModelProperty(notes = "El nombre debe contener entre 2 y 30 caracteres")
     @Column(name = "apellidos")
-    @NotNull
+    @NotEmpty
     @Size(min = 2, max = 30)
     private String apellidos;
 
     @ApiModelProperty(notes = "El correo debe ser un email valido")
     @Column(name = "correo")
-    @NotNull
+    @NotEmpty
     @Email
     private String correoCliente;
 
     @ApiModelProperty(notes = "El telefono debe contener entre 8 y 12 caracteres")
     @Column(name = "telefono")
-    @NotNull
+    @NotEmpty
     @Size(min = 8, max = 12)
     private String telefono;
 
     @ApiModelProperty(notes = "La ciudad debe contener entre 5 y 20 caracteres")
     @Column(name = "ciudad")
-    @NotNull
+    @NotEmpty
     @Size(min = 5, max = 20)
     private String ciudad;
 
     @ApiModelProperty(notes = "La direccion debe contener entre 5 y 50 caracteres")
     @Column(name = "direccion")
-    @NotNull
+    @NotEmpty
     @Size(min = 5, max = 50)
     private String direccion;
 
